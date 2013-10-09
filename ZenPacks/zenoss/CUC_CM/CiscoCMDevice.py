@@ -7,9 +7,15 @@
 #
 ##############################################################################
 
-from Products.Zuul.interfaces import IComponentInfo, IRRDDataSourceInfo
-from Products.Zuul.form import schema
-from Products.Zuul.utils import ZuulMessageFactory as _t
 
-class ICMComponentInfo(IComponentInfo):
-    media_description = schema.TextLine(title=_t(u'Type'), group='Detail', readonly=True)
+
+from Products.ZenModel.Device import Device
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
+
+class CiscoCMDevice(Device):
+    _relations = Device._relations + (
+        ('cmComponents', ToManyCont(ToOne,
+            'ZenPacks.zenoss.CUC_CM.CiscoCMComponent',
+            'host',
+            )),
+        )

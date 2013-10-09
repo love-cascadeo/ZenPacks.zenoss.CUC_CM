@@ -1,18 +1,12 @@
 <?xml version="1.0"?>
 <objects>
-<!-- ('', 'zport', 'dmd', 'Devices', 'Network', 'Cisco', 'CiscoCM') -->
+<!-- ('', 'zport', 'dmd', 'Devices', 'Network', 'Cisco', 'CiscoICM') -->
 <object id='/zport/dmd/Devices/Network/Cisco/CiscoCM' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
-<property id='zendoc' type='string'>
-Cisco Call Manager Device Class
-</property>
-<property type="string" id="description" mode="w" >
-Cisco Call Manager Device Class
+<property visible="True" type="string" id="zPythonClass" >
+ZenPacks.zenoss.CUC_CM.CiscoCMDevice
 </property>
 <property visible="True" type="lines" id="zCollectorPlugins" >
-['zenoss.snmp.NewDeviceMap', 'zenoss.snmp.DeviceMap', 'zenoss.snmp.CiscoMap', 'zenoss.snmp.InterfaceMap', 'zenoss.snmp.HSRPMap', 'RTTProbes', 'SLBVirtualServers', 'zenoss.snmp.CiscoStackModuleMap', 'zenoss.snmp.CiscoDS1Map', 'zenoss.snmp.RouteMap']
-</property>
-<property visible="True" type="boolean" id="zSnmpMonitorIgnore" >
-False
+['zenoss.snmp.NewDeviceMap', 'zenoss.snmp.CiscoCMMap', 'cisco.snmp.Interfaces', 'zenoss.snmp.HRSWRunMap', 'zenoss.snmp.HRSWInstalledMap', 'zenoss.snmp.HRFileSystemMap']
 </property>
 </object>
 </objects>

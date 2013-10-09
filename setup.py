@@ -8,7 +8,7 @@ AUTHOR = "Zenoss Professional Services"
 LICENSE = ""
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.zenoss']
 PACKAGES = ['ZenPacks', 'ZenPacks.zenoss', 'ZenPacks.zenoss.CUC_CM']
-INSTALL_REQUIRES = []
+INSTALL_REQUIRES = ['ZenPacks.zenoss.CiscoMonitor']
 COMPAT_ZENOSS_VERS = ""
 PREV_ZENPACK_NAME = ""
 # STOP_REPLACEMENTS
