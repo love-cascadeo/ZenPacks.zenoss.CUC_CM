@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<objects>
+<!-- ('', 'zport', 'dmd', 'Devices', 'Network', 'Cisco', 'CiscoCM') -->
+<object id='/zport/dmd/Devices/Network/Cisco/CiscoCM' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
+<property id='zendoc' type='string'>
+Cisco Call Manager Device Class
+</property>
+<property type="string" id="description" mode="w" >
+Cisco Call Manager Device Class
+</property>
+<property visible="True" type="lines" id="zCollectorPlugins" >
+['zenoss.snmp.NewDeviceMap', 'zenoss.snmp.DeviceMap', 'zenoss.snmp.CiscoMap', 'zenoss.snmp.InterfaceMap', 'zenoss.snmp.HSRPMap', 'RTTProbes', 'SLBVirtualServers', 'zenoss.snmp.CiscoStackModuleMap', 'zenoss.snmp.CiscoDS1Map', 'zenoss.snmp.RouteMap']
+</property>
+<property visible="True" type="boolean" id="zSnmpMonitorIgnore" >
+False
+</property>
+</object>
+</objects>
