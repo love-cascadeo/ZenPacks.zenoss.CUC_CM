@@ -5,7 +5,7 @@ var ZC = Ext.ns('Zenoss.component');
 ZC.registerName(
     'CiscoCMComponent',
     _t('Cisco CM Component'),
-    _t('Cisco CM Component'));
+    _t('Cisco CM Components'));
 
 ZC.CiscoCMComponentPanel = Ext.extend(ZC.ComponentGridPanel, {
 	constructor: function(config) {
