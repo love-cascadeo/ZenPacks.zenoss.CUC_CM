@@ -51,6 +51,31 @@ True
 </tomanycont>
 </object>
 </tomanycont>
+<tomanycont id='thresholds'>
+<object id='Media Device Is Not Registered' module='Products.ZenModel.MinMaxThreshold' class='MinMaxThreshold'>
+<property label="DataPoints" type="lines" id="dsnames" mode="w" >
+['ccmMediaDeviceStatus_ccmMediaDeviceStatus']
+</property>
+<property label="Enabled" type="boolean" id="enabled" mode="w" >
+True
+</property>
+<property type="string" id="minval" mode="w" >
+2
+</property>
+<property type="string" id="maxval" mode="w" >
+2
+</property>
+<property type="string" id="eventClass" mode="w" >
+/Status/CMComponent
+</property>
+<property type="int" id="severity" mode="w" >
+5
+</property>
+<property type="int" id="escalateCount" mode="w" >
+0
+</property>
+</object>
+</tomanycont>
 <tomanycont id='graphDefs'>
 <object id='Media Device Status' module='Products.ZenModel.GraphDefinition' class='GraphDefinition'>
 <property type="int" id="height" mode="w" >
@@ -78,9 +103,20 @@ True
 0
 </property>
 <tomanycont id='graphPoints'>
-<object id='ccmMediaDeviceStatus' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<object id='Media Device Is Not Registered' module='Products.ZenModel.ThresholdGraphPoint' class='ThresholdGraphPoint'>
 <property type="long" id="sequence" mode="w" >
 0
+</property>
+<property type="string" id="threshId" mode="w" >
+Media Device Is Not Registered
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+</object>
+<object id='ccmMediaDeviceStatus' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property type="long" id="sequence" mode="w" >
+1
 </property>
 <property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
 LINE
@@ -115,6 +151,18 @@ AVERAGE
 </object>
 <!-- ('', 'zport', 'dmd', 'Events', 'Status', 'CMComponent') -->
 <object id='/zport/dmd/Events/Status/CMComponent' module='Products.ZenEvents.EventClass' class='EventClass'>
+<property type="text" id="transform" mode="w" >
+status_enum = {
+    1: 'unknown',
+    2: 'registered',
+    3: 'unregistered',
+    4: 'rejected',
+    5: 'partiallyregistered'
+    }
+new_status = int(float(getattr(evt, 'current')))
+status_name = status_enum[new_status]
+evt.summary = 'Status of %s has changed to %s' % (evt.component, status_name)
+</property>
 <property type="text" id="transform" mode="w" >
 status_enum = {
     1: 'unknown',
